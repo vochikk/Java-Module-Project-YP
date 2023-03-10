@@ -9,12 +9,22 @@ public class Main {
 
 
         System.out.println("На сколько человек необходимо разделить счет");
-        int numberOfPerson = scanner.nextInt();
+        int numberOfPerson;
+        while (!scanner.hasNextInt()){
+            System.out.println("Некорректный ввод,повторите попытку");
+            scanner.next();
+        }
+        numberOfPerson = scanner.nextInt();
 
         while (true){
             if (numberOfPerson <= 1){
                 System.out.println("Некорректный ввод,повторите попытку");
+                while (!scanner.hasNextInt()){
+                    System.out.println("Некорректный ввод,повторите попытку");
+                    scanner.next();
+                }
                 numberOfPerson = scanner.nextInt();
+
             } else {
                 break;
             }
@@ -35,6 +45,10 @@ public class Main {
             }
 
             System.out.println("Введите цену на товар");
+            while (!scanner.hasNextDouble()){
+                System.out.println("Некорректный ввод,повторите попытку");
+                scanner.next();
+            }
             listOfProducts.price = scanner.nextDouble();
             listOfProducts.listToByu = listOfProducts.addToProductList(listOfProducts.nameOfProduct, listOfProducts.price);
 
