@@ -50,6 +50,15 @@ public class Main {
                 scanner.next();
             }
             listOfProducts.price = scanner.nextDouble();
+            while (listOfProducts.price < 0){
+                System.out.println("Некорректный ввод, повторите попытку");
+                while (!scanner.hasNextDouble()){
+                    System.out.println("Некорректный ввод,повторите попытку");
+                    scanner.next();
+                }
+                listOfProducts.price = scanner.nextDouble();
+            }
+
             listOfProducts.listToByu = listOfProducts.addToProductList(listOfProducts.nameOfProduct, listOfProducts.price);
 
             System.out.println("Товар успешно добавлен");
@@ -64,7 +73,7 @@ public class Main {
                                                    + formater.rounding(calculator.totalPrice) + " " + rubl);
 
             calculator.calculate(calculator.totalPrice, numberOfPerson);
-            System.out.println("Каждому необходимо заплатить по: " + calculator.priceToPayment + " "
+            System.out.println("Каждому необходимо заплатить по: " + formater.rounding(calculator.priceToPayment) + " "
                                                                    + formater.declination(calculator.priceToPayment));
         }
     }
